@@ -16,6 +16,11 @@ ASENNUS
 KÄYTTÖ
 
 
+VIDEON EXPORTTAUS
+
+Handbrake
+FFMPEG
+
 Käyttöohjeet
 
 
@@ -31,7 +36,7 @@ Laittaaksesi toisen videon toista sama prosessi. Edellinen video poistetaan sill
 Huom.
 *****
 Mikä tahansa muistitikulla oleva tiedosto ladataan. Jos toistaminen ei onnistu, tarkasta että oikea tiedosto ladattiin!
-Suositeltu formaatti videolle on: 
+Suositeltu formaatti videolle on:
 	H.264 High 1920x1080 60fps
 
 
@@ -75,7 +80,7 @@ To insert another video, repeat the same process. The previous video will be del
 Notes
 *****
 Any file on the drive will be loaded, whether or not it is a valid video file. If the player fails, make sure the right file was loaded!
-Preferred format for video is: 
+Preferred format for video is:
 	H.264 High 1920x1080 60fps
 
 
