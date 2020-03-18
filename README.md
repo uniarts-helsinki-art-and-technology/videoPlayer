@@ -5,6 +5,16 @@
 
 Videosoitin Raspberry Pi:lle
 
+ASENNUS
+
+1.
+2.
+3.
+...
+
+
+KÄYTTÖ
+
 
 Käyttöohjeet
 
