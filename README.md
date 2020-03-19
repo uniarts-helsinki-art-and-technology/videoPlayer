@@ -5,98 +5,126 @@
 
 Videosoitin Raspberry Pi:lle
 
-ASENNUS
 
-1.
-2.
-3.
-...
+****************************
 
 
-KÄYTTÖ
+Riippuvuudet:
+omxplayer
+python
 
 
-VIDEON EXPORTTAUS
+Asennus
 
-Handbrake
-FFMPEG
 
-Käyttöohjeet
+Lataa ja mene kansioon videoPlayer
+Asenna makella:
+	$ make install
+
+Poistaaksesi asennuksen:
+	$ make uninstall
+
+
+****************************
+
+
+Videon tuottaminen
+
+
+Suositeltu formaatti on:
+resoluutio: 	1920x1080 
+muoto: 		H.264 
+profiili: 	High 4.0
+frame rate: 	60 fps
+
+Käytä esimerkiksi Handbrake-ohjelmaa videon tuottamiseen näillä parametreilla.
+
+
+***************************
 
 
 Videon laittaminen raspberry pi:lle
-***********************************
-Laita video muistitikulle. Siellä ei pidä olla muita tiedostoja ja videon ei pidä olla kansion sisällä. (Piilotiedostot ja kansiot ei haittaa. Jos siellä on monta tiedostoa, käytetään aakkosjärjestyksessä ensimmäistä.)
-Liitä muistitikku Raspberry Pi:hin ja kytke se päälle. Video siirtyy muistikortille ja lähtee pyörimään.
-Muistitikun voi sen jälkeen poistaa. Sammuta kuitenkin Raspberry Pi ennen kuin poistat muistitikun. (Se kylläkin irrotetaan umountilla siirron jälkeen, mutta varmuuden vuoksi kannattaa sammuttaa.)
-Video lähtee aina automaattisesti pyörimään kun Raspberry Pi käynnistetään. (Ensin koitetaan 10 kertaa lukea muistitikkua. Silloin ruudulla lukee: "Ei löydetty mediaa. Yritetään uudestaan..." Siinä välissä voi vielä liittää muistitikun.)
-Laittaaksesi toisen videon toista sama prosessi. Edellinen video poistetaan silloin.
+
+1. Laita videotiedosto muistitikulle. Siellä ei pidä olla muita tiedostoja, ja tiedoston ei pidä olla kansion sisällä.
+2. Liitä muistitikku Raspberry Pi:hin 
+3. Käynnistä Raspberry Pi.
+Video siirtyy Raspberry Pi:n muistikortille ja lähtee pyörimään.
+
+Tämän jälkeen kun Raspberry Pi käynnistetään ilman muistitikkua, video lähtee automaattisesti pyörimään.
+Laittaaksesi toisen videon toista sama menettely. Silloin aiemmin ladatut videot poistetaan.
 
 
-Huom.
-*****
-Mikä tahansa muistitikulla oleva tiedosto ladataan. Jos toistaminen ei onnistu, tarkasta että oikea tiedosto ladattiin!
-Suositeltu formaatti videolle on:
-	H.264 High 1920x1080 60fps
+***************************
 
 
-Asentaminen makella
-*******************
-Tämä on tarkoitettu asennettavaksi Raspbian-järjestelmälle jossa on graafinen tila (LXDE).
-Riippuvuudet: omxplayer, python (jotka löytyvät oletuksena)
-Mene kansioon videoPlayer:
-	$ cd videoPlayer
-Aja make:
-	$ make
+Lisätietoja
 
-
-Poistaminen
-************
-Mene kansioon videoPlayer:
-	$ cd videoPlayer
-Aja make:
-	$ make remove
+Jos muistitikulla on muita tiedostoja, käytetään aakkosjärjestyksessä ensimmäistä.
+Jos tiedosto ei ole kelvollinen videotiedosto, se kopioidaan ja toistetaan silti. Jos toistaminen epäonnistuu, tarkista että oikea tiedosto ladattiin.
+Muistitikku kannattaa varmuuden vuoksi irrottaa vasta, kun Raspberry Pi on sammutettu.
 
 
 *****************************************************************************************************
 
 
-Video player for Raspberry Pi
+Video player for the Raspberry Pi
 
 
-Instructions
+***************************
 
 
-How to insert video on the Raspberry Pi
-***************************************
-Put the video file on a USB drive. There should be no other files on the drive. The file should not be inside a folder. (Hidden files and folders are ok. If there are many files, the first one is used, in alphanumeric order.)
-Connect the USB drive to the Raspberry Pi and turn the Raspberry Pi on.
-The video is copied on the SD card of the Raspberry Pi and starts playing.
-The USB drive can be removed after this. Turn power off before removing the drive though. (It is unmounted using umount but just to be sure)
-The video will play automatically when the Raspberry Pi is started. (Before that it will search for a USB drive 10 times. A drive can be inserted and it will load a video.)
-To insert another video, repeat the same process. The previous video will be deleted.
+Dependencies:
+omxplayer
+python
 
 
-Notes
-*****
-Any file on the drive will be loaded, whether or not it is a valid video file. If the player fails, make sure the right file was loaded!
-Preferred format for video is:
-	H.264 High 1920x1080 60fps
+How to install
 
 
-How to install using make
-*************************
-Use a Raspbian system with the LXDE graphical environment - such as the main Raspbian build.
-Dependencies: omxplayer, python (which are provided by default)
-Go to the videoPlayer_0-2 path:
-	$ cd videoPlayer_0-2
-Run make:
-	$ make
+Download and go to the videoPlayer path
+Install with make:
+	$ make install
+
+To uninstall:
+	$ make uninstall
 
 
-How to remove
-*************
-Go to the videoPlayer_0-2 path:
-	$ cd videoPlayer_0-2
-Run make:
-	$ make remove
+***************************
+
+
+How to export a video
+
+
+The recommended format is:
+Resolution:	1920x1080
+Format:		H.264
+Profile:	High 4.0
+Frame rate:	60 fps
+
+Use, for example, Handbrake to export video with these parameters.
+
+
+***************************
+
+
+How to play the video file on the Raspberry Pi
+
+1. Put the file on a USB drive. 
+There should be no other files, and it should not be inside a folder.
+2. Insert the USB drive to the Raspberry Pi.
+3. Turn the Raspberry Pi on.
+The video will be copied on the Raspberry Pi local storage, and start playing.
+
+After this the video will play automatically when the Raspberry Pi is started with no USB drive attached. 
+To load another video, repeat the same process. Any previously loaded files will be removed.
+
+
+***************************
+
+
+Additional information
+
+If there are multiple files on the USB drive, the first file in alphanumeric order will be used.
+Any file will be used whether or not it is a valid video file. If playing fails, make sure the right file was loaded.
+The USB drive should be removed after the Raspberry Pi is turned off, just to be sure.
+

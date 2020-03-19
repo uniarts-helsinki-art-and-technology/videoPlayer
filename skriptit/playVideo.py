@@ -11,7 +11,7 @@ import os
 import time
 
 
-#Polku jonne liitettävät mediat liitetään
+#Polku johon liitettävät mediat liitetään
 # Path where removable media is mounted
 MEDIAPOLKU = "/media/pi/"
 LOKAALI_POLKU = "/home/pi/Desktop/videot/"
@@ -27,8 +27,11 @@ class c_media:
 	def haeVideotiedosto(self):
 		#luettele mediapolun tiedostot eli USB-tikut ym.
 		#list files in the media path, ie. USB drives etc.
-		medialuettelo = os.listdir(MEDIAPOLKU)
-		medialuettelo.sort()
+		try:
+			medialuettelo = os.listdir(MEDIAPOLKU)
+			medialuettelo.sort()
+		except:
+			return ""
 
 		#jos ei löydy kansiota, palauta ""
 		#if no folder is found, return ""
@@ -127,7 +130,7 @@ while True:
 			print "Poistetaan entiset tiedostot muistikortilta"
 			os.system("rm -f -v " + LOKAALI_POLKU + "*");
 			print "Siirretään tiedosto muistikortille"
-			os.system("cp -v " + videotiedostoMedialta + " " + LOKAALI_POLKU);
+			os.system("mkdir -p " + LOKAALI_POLKU + " && cp -v " + videotiedostoMedialta + " " + LOKAALI_POLKU);
 			media.irrota()
 			break
 		else:
