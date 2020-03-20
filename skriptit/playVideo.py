@@ -25,32 +25,32 @@ class c_media:
 	# Hae tiedosto liitettävältä medialta. Palauta tiedoston koko polku. Jos ei löytynyt, palauta ""
 	# Search removable media for a file. Return full path to file. If not found, return ""
 	def haeVideotiedosto(self):
-		#luettele mediapolun tiedostot eli USB-tikut ym.
-		#list files in the media path, ie. USB drives etc.
+
+		#Jos polkujen luku epäonnistuu esim. siksi, ettei ole käyttöoikeuksia, palauta ""
+		#If accessing the paths fails eg. because of permissions, return ""
 		try:
+			#luettele mediapolun tiedostot eli USB-tikut ym.
+			#list files in the media path, ie. USB drives etc.
 			medialuettelo = os.listdir(MEDIAPOLKU)
 			medialuettelo.sort()
-		except:
-			return ""
 
-		#jos ei löydy kansiota, palauta ""
-		#if no folder is found, return ""
-		if len(medialuettelo) == 0:
-			return ""
+			#jos ei löydy kansiota, palauta ""
+			#if no folder is found, return ""
+			if len(medialuettelo) == 0:
+				return ""
 		
-		#polku jossa videotiedostot ovat:
-		#path to video files:
-		try:
+			#polku jossa videotiedostot ovat:
+			#path to video files:
 			videopolku = MEDIAPOLKU + medialuettelo[0] + "/"
 			if os.path.isdir(videopolku) == False:
 				return ""
+
+			#luetellaan polun tiedostot
+			#list files in the path
+			tiedostot = os.listdir(videopolku)
+			tiedostot.sort()
 		except:
 			return ""
-
-		#luetellaan polun tiedostot
-		#list files in the path
-		tiedostot = os.listdir(videopolku)
-		tiedostot.sort()
 
 		#Haetaan luettelosta ensimmäinen tiedosto, joka ei ole kansio eikä pistealkuinen
 		#Search from the list the first file that is not a folder or a dot file
