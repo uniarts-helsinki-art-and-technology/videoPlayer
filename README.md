@@ -31,7 +31,7 @@ Suositeltu formaatti on:
 * profiili: 	High 4.0
 * frame rate: 	60 fps
 
-Käytä esimerkiksi Handbrake-ohjelmaa videon tuottamiseen näillä parametreilla.
+Käytä esimerkiksi [Handbrake](https://handbrake.fr/)-ohjelmaa videon tuottamiseen näillä parametreilla.
 
 
 ## Videon laittaminen raspberry pi:lle
