@@ -11,64 +11,55 @@ import os
 import time
 
 
-#Polku johon liitettävät mediat liitetään
-# Path where removable media is mounted
 MEDIAPOLKU = "/media/pi/"
 LOKAALI_POLKU = "/home/pi/Desktop/videot/"
+MAX_YRITYKSIA = 10
+
+def onPiilotiedostoTaiKansio(polku):
+	try:
+		if os.path.isdir(polku):
+			return True
+		if polku[0] == ".":
+			return True
+		return False
+	except:
+		return False
 
 
-# Luokka liitettävän median (eli muistitikun) lukemista varten
-# Class for reading USB drive
-class c_media:
+class c_mediaLataaja:
 	liitettyPolku = ""
 
-	# Hae tiedosto liitettävältä medialta. Palauta tiedoston koko polku. Jos ei löytynyt, palauta ""
-	# Search removable media for a file. Return full path to file. If not found, return ""
-	def haeVideotiedosto(self):
 
-		#Jos polkujen luku epäonnistuu esim. siksi, ettei ole käyttöoikeuksia, palauta ""
-		#If accessing the paths fails eg. because of permissions, return ""
-		try:
-			#luettele mediapolun tiedostot eli USB-tikut ym.
-			#list files in the media path, ie. USB drives etc.
-			medialuettelo = os.listdir(MEDIAPOLKU)
-			medialuettelo.sort()
-
-			#jos ei löydy kansiota, palauta ""
-			#if no folder is found, return ""
-			if len(medialuettelo) == 0:
-				return ""
-		
-			#polku jossa videotiedostot ovat:
-			#path to video files:
-			videopolku = MEDIAPOLKU + medialuettelo[0] + "/"
-			if os.path.isdir(videopolku) == False:
-				return ""
-
-			#luetellaan polun tiedostot
-			#list files in the path
-			tiedostot = os.listdir(videopolku)
-			tiedostot.sort()
-		except:
+	# Palauta koko polku tiedostoon
+	# Return full path to file
+	def haeTiedostoMedialta(self):
+		medialuettelo = os.listdir(MEDIAPOLKU)
+		medialuettelo.sort()
+		if len(medialuettelo) == 0:
 			return ""
-
-		#Haetaan luettelosta ensimmäinen tiedosto, joka ei ole kansio eikä pistealkuinen
-		#Search from the list the first file that is not a folder or a dot file
-		videotiedosto = ""
-		for tiedosto in tiedostot:
-			if tiedosto[0] == '.':
+		for media in medialuettelo:
+			polku = MEDIAPOLKU + media + "/"
+			try:
+				if os.path.isdir(polku) == False:
+					continue
+				tiedostot = os.listdir(polku)
+			except:
 				continue
-			if os.path.isdir(videopolku + tiedosto):
+			if len(tiedostot) == 0:
 				continue
-			else:
-				return videopolku + tiedosto
-				liitettyPolku = videopolku
-				break
+			tiedostot.sort()
+			for tiedosto in tiedostot:
+				if onPiilotiedostoTaiKansio(tiedosto):
+					continue
+				else:
+					return polku + tiedosto
+					self.liitettyPolku = polku
+					break
 		return ""
 		
 
-	# Hae tiedosto lokaalista polusta
-	# Look for a file in the local path
+	# Palauta koko polku tiedostoon
+	# Return full path to file
 	def haeLokaaliTiedosto(self):
 		try:
 			if os.path.isdir(LOKAALI_POLKU) == False:
@@ -87,9 +78,8 @@ class c_media:
 			return
 		os.system("umount " + self.liitettyPolku)
 
-# instanssi
-# instance
-media = c_media()
+
+mediaLataaja = c_mediaLataaja()
 
 
 ##########################################################################################
@@ -123,26 +113,33 @@ media = c_media()
 
 while True:
 	yritys = 0
-	while yritys < 10:
-		videotiedostoMedialta = media.haeVideotiedosto()
+	while yritys < MAX_YRITYKSIA:
+		videotiedostoMedialta = mediaLataaja.haeTiedostoMedialta()
 		if videotiedostoMedialta != "":
 			print "Löydettiin tiedosto " + videotiedostoMedialta
+			print "Found file " + videotiedostoMedialta
+
 			print "Poistetaan entiset tiedostot muistikortilta"
+			print "Removing previous files from the local storage"
 			os.system("rm -f -v " + LOKAALI_POLKU + "*");
-			print "Siirretään tiedosto muistikortille"
-			os.system("mkdir -p " + LOKAALI_POLKU + " && cp -v " + videotiedostoMedialta + " " + LOKAALI_POLKU);
-			media.irrota()
+			print "Kopioidaan tiedosto muistikortille"
+			print "Copying file to the local storage"
+			os.system("mkdir -p " + LOKAALI_POLKU + " && cp -v \"" + videotiedostoMedialta + "\" " + LOKAALI_POLKU);
+			mediaLataaja.irrota()
 			break
 		else:
-			print "Ei löydetty mediaa. Yritetään uudestaan..."
+			print "Ei löydetty mediaa. Yritetään uudestaan...", \
+				yritys+1, "/", MAX_YRITYKSIA
+			print "No media found. Trying again..."
 		yritys = yritys + 1
 		time.sleep(1)
-	if media.haeLokaaliTiedosto() != "":
+	if mediaLataaja.haeLokaaliTiedosto() != "":
 		break
 
-lokaaliTiedosto = media.haeLokaaliTiedosto()
+lokaaliTiedosto = mediaLataaja.haeLokaaliTiedosto()
 print "Toistetaan: " + lokaaliTiedosto
 
 # argumentti -o: käytetään audiolaitteena sekä analogista ulostuloa että HDMI:tä
 # argument -o: using both audio devices - analog output and HDMI
-os.system("omxplayer --loop -o both " + lokaaliTiedosto)
+os.system("omxplayer --loop -o both --no-osd \"" + lokaaliTiedosto + "\"")
+
