@@ -1,12 +1,5 @@
-# videoPlayer
-
+# Videosoitin Raspberry Pi:lle
 (english: see below)
-
-
-Videosoitin Raspberry Pi:lle
-
-
-****************************
 
 
 Riippuvuudet:
@@ -14,7 +7,7 @@ Riippuvuudet:
 * python
 
 
-Asennus
+## Asennus
 
 
 Lataa ja mene kansioon videoPlayer
@@ -28,10 +21,7 @@ Poistaaksesi asennuksen:
 	$ make uninstall
 
 
-****************************
-
-
-Videon tuottaminen
+## Videon tuottaminen
 
 
 Suositeltu formaatti on:
@@ -44,10 +34,7 @@ Suositeltu formaatti on:
 Käytä esimerkiksi Handbrake-ohjelmaa videon tuottamiseen näillä parametreilla.
 
 
-***************************
-
-
-Videon laittaminen raspberry pi:lle
+## Videon laittaminen raspberry pi:lle
 
 1. Laita videotiedosto muistitikulle. Siellä ei pidä olla muita tiedostoja, ja tiedoston ei pidä olla kansion sisällä.
 2. Liitä muistitikku Raspberry Pi:hin 
@@ -59,10 +46,7 @@ Tämän jälkeen kun Raspberry Pi käynnistetään ilman muistitikkua, video lä
 Laittaaksesi toisen videon toista sama menettely. Silloin aiemmin ladatut videot poistetaan.
 
 
-***************************
-
-
-Lisätietoja
+## Lisätietoja
 
 Jos muistitikulla on muita tiedostoja, käytetään aakkosjärjestyksessä ensimmäistä.
 
@@ -74,10 +58,7 @@ Muistitikku kannattaa varmuuden vuoksi irrottaa vasta, kun Raspberry Pi on sammu
 *****************************************************************************************************
 
 
-Video player for the Raspberry Pi
-
-
-***************************
+# Video player for the Raspberry Pi
 
 
 Dependencies:
@@ -85,7 +66,7 @@ Dependencies:
 * python
 
 
-How to install
+## How to install
 
 
 Download and go to the videoPlayer path
@@ -99,10 +80,7 @@ To uninstall:
 	$ make uninstall
 
 
-***************************
-
-
-How to export a video
+## How to export a video
 
 
 The recommended format is:
@@ -111,13 +89,10 @@ The recommended format is:
 * Profile:	High 4.0
 * Frame rate:	60 fps
 
-Use, for example, Handbrake to export video with these parameters.
+Use, for example, [Handbrake](https://handbrake.fr/) to export video with these parameters.
 
 
-***************************
-
-
-How to play the video file on the Raspberry Pi
+## How to play the video file on the Raspberry Pi
 
 1. Put the file on a USB drive. There should be no other files, and it should not be inside a folder.
 2. Insert the USB drive to the Raspberry Pi.
@@ -128,10 +103,7 @@ After this the video will play automatically when the Raspberry Pi is started wi
 To load another video, repeat the same process. Any previously loaded files will be removed.
 
 
-***************************
-
-
-Additional information
+## Additional information
 
 If there are multiple files on the USB drive, the first file in alphanumeric order will be used.
 
