@@ -10,7 +10,9 @@ Riippuvuudet:
 ## Asennus
 
 
-Lataa ja mene kansioon videoPlayer
+Lataa ja mene kansioon videoPlayer-master
+
+	$ cd /polku/kansioon/videoPlayer-master
 
 Asenna makella:
 
@@ -26,8 +28,8 @@ Poistaaksesi asennuksen:
 
 Suositeltu formaatti on:
 
-* resoluutio: 	1920x1080 
-* muoto: 		H.264 
+* resoluutio: 	1920x1080
+* muoto: 		H.264
 * profiili: 	High 4.0
 * frame rate: 	60 fps
 
@@ -37,7 +39,7 @@ Käytä esimerkiksi [Handbrake](https://handbrake.fr/)-ohjelmaa videon tuottamis
 ## Videon laittaminen raspberry pi:lle
 
 1. Laita videotiedosto muistitikulle. Siellä ei pidä olla muita tiedostoja, ja tiedoston ei pidä olla kansion sisällä.
-2. Liitä muistitikku Raspberry Pi:hin 
+2. Liitä muistitikku Raspberry Pi:hin
 3. Käynnistä Raspberry Pi.
 Video siirtyy Raspberry Pi:n muistikortille ja lähtee pyörimään.
 
@@ -98,7 +100,7 @@ Use, for example, [Handbrake](https://handbrake.fr/) to export video with these 
 2. Insert the USB drive to the Raspberry Pi.
 3. Turn the Raspberry Pi on. The video will be copied on the Raspberry Pi local storage, and start playing.
 
-After this the video will play automatically when the Raspberry Pi is started with no USB drive attached. 
+After this the video will play automatically when the Raspberry Pi is started with no USB drive attached.
 
 To load another video, repeat the same process. Any previously loaded files will be removed.
 
@@ -110,4 +112,3 @@ If there are multiple files on the USB drive, the first file in alphanumeric ord
 Any file will be used whether or not it is a valid video file. If playing fails, make sure the right file was loaded.
 
 The USB drive should be removed after the Raspberry Pi is turned off, just to be sure.
-
