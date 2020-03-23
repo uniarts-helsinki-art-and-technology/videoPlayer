@@ -113,4 +113,4 @@ If there are multiple files on the USB drive, the first file in alphanumeric ord
 
 Any file will be used whether or not it is a valid video file. If playing fails, make sure the right file was loaded.
 
-The USB drive should be removed after the Raspberry Pi is turned off, just to be sure.
+The USB drive should be removed only after the Raspberry Pi is turned off, just to be sure.
