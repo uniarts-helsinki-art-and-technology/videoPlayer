@@ -1,5 +1,5 @@
 src = skriptit/
-playskripti = playVideo.py
+playskripti = playVideo.sh
 autostart = playVideo.desktop
 skriptipolku = /home/pi/Desktop/
 autostartpolku = /home/pi/.config/autostart/
@@ -12,6 +12,7 @@ install:
 	mkdir -p $(skriptipolku)
 	mkdir -p $(autostartpolku)
 	cp -vf $(src)$(playskripti) $(skriptipolku)$(playskripti)
+	chmod +x $(skriptipolku)$(playskripti)
 	cp -vf $(src)$(autostart) $(autostartpolku)$(autostart)
 
 uninstall:
