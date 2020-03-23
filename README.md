@@ -22,6 +22,8 @@ Poistaaksesi asennuksen:
 
 	$ make uninstall
 
+Huom! Tämä ei poista videotiedostoa eikä ladattua videoPlayer kansiota.
+
 
 ## Videon tuottaminen
 
