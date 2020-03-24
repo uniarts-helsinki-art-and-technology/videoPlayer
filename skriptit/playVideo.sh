@@ -139,7 +139,7 @@ while True:
 lokaaliTiedosto = mediaLataaja.haeLokaaliTiedosto()
 print "Toistetaan: " + lokaaliTiedosto
 
-# argumentti -o: käytetään audiolaitteena sekä analogista ulostuloa että HDMI:tä
-# argument -o: using both audio devices - analog output and HDMI
-os.system("omxplayer --loop -o both --no-osd \"" + lokaaliTiedosto + "\"")
+# argumentti -o: käytetään audiolaitteena analogista ulostuloa
+# argument -o: using analog audio output
+os.system("omxplayer --loop -o alsa --no-osd \"" + lokaaliTiedosto + "\"")
 
