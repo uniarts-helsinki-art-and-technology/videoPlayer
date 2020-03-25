@@ -31,7 +31,7 @@ Huom! Tämä ei poista videotiedostoa eikä ladattua videoPlayer kansiota.
 Suositeltu formaatti on:
 
 * resoluutio: 	1920x1080
-* muoto: 		H.264
+* muoto: 	H.264
 * profiili: 	High 4.0
 * frame rate: 	60 fps
 
@@ -74,7 +74,9 @@ Dependencies:
 
 
 Download and go to the videoPlayer path
-
+	
+	$ cd /path/to/videoPlayer-master
+	
 Install with make:
 
 	$ make install
@@ -83,13 +85,15 @@ To uninstall:
 
 	$ make uninstall
 
+Note: 'make uninstall' does not remove the loaded video or the videoPlayer folder.
+
 
 ## How to export a video
 
 
 The recommended format is:
 * Resolution:	1920x1080
-* Format:		H.264
+* Format:	H.264
 * Profile:	High 4.0
 * Frame rate:	60 fps
 
