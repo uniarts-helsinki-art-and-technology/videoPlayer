@@ -139,7 +139,6 @@ while True:
 
 lokaaliTiedosto = mediaLataaja.haeLokaaliTiedosto()
 print "Toistetaan: " + lokaaliTiedosto + "..."
-sleep(5)
 
 # argumentti -o: käytetään audiolaitteena analogista ulostuloa
 # argument -o: using analog audio output
