@@ -15,13 +15,13 @@ MEDIAPOLKU = "/media/pi/"
 LOKAALI_POLKU = "/home/pi/Desktop/videot/"
 MAX_YRITYKSIA = 10
 
-def onPiilotiedostoTaiKansio(polku):
+def onPiilotiedostoTaiKansio(polku, tiedosto):
 	try:
-		if os.path.isdir(polku):
-			print "Tiedosto \"" + polku + "\" on kansio"
+		if os.path.isdir(polku+tiedosto):
+			print "Tiedosto \"" + polku+tiedosto + "\" on kansio"
 			return True
-		if polku[0] == ".":
-			print "Tiedosto \"" + polku + "\" on piilotiedosto"
+		if tiedosto[0] == ".":
+			print "Tiedosto \"" + polku+tiedosto + "\" on piilotiedosto"
 			return True
 		return False
 	except:
@@ -52,7 +52,7 @@ class c_mediaLataaja:
 				continue
 			tiedostot.sort()
 			for tiedosto in tiedostot:
-				if onPiilotiedostoTaiKansio(polku + tiedosto):
+				if onPiilotiedostoTaiKansio(polku, tiedosto):
 					continue
 				else:
 					self.liitettyPolku = polku
