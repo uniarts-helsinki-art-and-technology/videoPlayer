@@ -130,6 +130,7 @@ while True:
 			print "Copying file to the local storage"
 			os.system("mkdir -p " + LOKAALI_POLKU + " && cp -v \"" + videotiedostoMedialta + "\" " + LOKAALI_POLKU);
 			mediaLataaja.irrota()
+			time.sleep(5)
 			break
 		else:
 			print "Ei löydetty mediaa. Yritetään uudestaan...", \
@@ -146,4 +147,5 @@ print "Toistetaan: " + lokaaliTiedosto + "..."
 # argumentti -o: käytetään audiolaitteena analogista ulostuloa
 # argument -o: using analog audio output
 os.system("omxplayer --loop -o alsa --no-osd \"" + lokaaliTiedosto + "\"")
+time.sleep(5)
 

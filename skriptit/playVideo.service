@@ -1,10 +1,13 @@
 [Unit]
-Description=Play video
+Description=Play Video
 
 [Service]
-ExecStart=/home/pi/Desktop/playVideo.sh
+User=pi
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+ExecStart=lxterminal -e "/home/pi/Desktop/playVideo.sh"
 Restart=always
-RestartSec=5s
+RestartSec=1s
 KillMode=process
 TimeoutSec=infinity
 
