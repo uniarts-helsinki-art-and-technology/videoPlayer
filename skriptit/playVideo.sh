@@ -25,7 +25,7 @@ def onPiilotiedostoTaiKansio(polku):
 			return True
 		return False
 	except:
-		print "Tiedostoa " + " ei voitu lukea!"
+		print "Tiedostoa \"" + polku + "\" ei voitu lukea!"
 		return True
 
 
