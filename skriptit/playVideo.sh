@@ -26,7 +26,7 @@ def onPiilotiedostoTaiKansio(polku):
 		return False
 	except:
 		print "Tiedostoa " + " ei voitu lukea!"
-		return False
+		return True
 
 
 class c_mediaLataaja:
