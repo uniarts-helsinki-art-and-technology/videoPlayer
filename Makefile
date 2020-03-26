@@ -1,21 +1,26 @@
 src = skriptit/
 playskripti = playVideo.sh
-autostart = playVideo.desktop
+servicetiedosto = playVideo.service
 skriptipolku = /home/pi/Desktop/
-autostartpolku = /home/pi/.config/autostart/
+servicepolku = /etc/systemd/system/
 
 all:
-	echo "Aja make install asentaaksesi"
-	echo "Run make install to install"
+	@echo "Aja sudo make install asentaaksesi"
+	@echo "Run sudo make install to install"
 
 install:
 	mkdir -p $(skriptipolku)
-	mkdir -p $(autostartpolku)
+	mkdir -p $(servicepolku)
 	cp -vf $(src)$(playskripti) $(skriptipolku)$(playskripti)
 	chmod +x $(skriptipolku)$(playskripti)
-	cp -vf $(src)$(autostart) $(autostartpolku)$(autostart)
+	cp -vf $(src)$(servicetiedosto) $(servicepolku)$(servicetiedosto)
+	systemctl enable $(servicetiedosto)
+	systemctl daemon-reload
 
 uninstall:
+	systemctl stop $(servicetiedosto)
+	systemctl disable $(servicetiedosto)
+	rm -v -f $(servicepolku)$(servicetiedosto)
+	systemctl daemon-reload
+	systemctl reset-failed
 	rm -v -f $(skriptipolku)$(playskripti)
-	rm -v -f $(autostartpolku)$(autostart)
-

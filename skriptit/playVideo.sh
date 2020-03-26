@@ -34,7 +34,10 @@ class c_mediaLataaja:
 	# Palauta koko polku tiedostoon
 	# Return full path to file
 	def haeTiedostoMedialta(self):
-		medialuettelo = os.listdir(MEDIAPOLKU)
+		try:
+			medialuettelo = os.listdir(MEDIAPOLKU)
+		except:
+			return ""
 		medialuettelo.sort()
 		if len(medialuettelo) == 0:
 			return ""

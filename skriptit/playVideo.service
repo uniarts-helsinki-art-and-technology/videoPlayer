@@ -1,0 +1,12 @@
+[Unit]
+Description=Play video
+
+[Service]
+ExecStart=/home/pi/Desktop/playVideo.sh
+Restart=always
+RestartSec=5s
+KillMode=process
+TimeoutSec=infinity
+
+[Install]
+WantedBy=graphical.target
