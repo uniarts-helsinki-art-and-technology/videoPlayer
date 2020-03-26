@@ -18,11 +18,14 @@ MAX_YRITYKSIA = 10
 def onPiilotiedostoTaiKansio(polku):
 	try:
 		if os.path.isdir(polku):
+			print "Tiedosto \"" + polku + "\" on kansio"
 			return True
 		if polku[0] == ".":
+			print "Tiedosto \"" + polku + "\" on piilotiedosto"
 			return True
 		return False
 	except:
+		print "Tiedostoa " + " ei voitu lukea!"
 		return False
 
 
@@ -49,11 +52,11 @@ class c_mediaLataaja:
 				continue
 			tiedostot.sort()
 			for tiedosto in tiedostot:
-				if onPiilotiedostoTaiKansio(tiedosto):
+				if onPiilotiedostoTaiKansio(polku + tiedosto):
 					continue
 				else:
-					return polku + tiedosto
 					self.liitettyPolku = polku
+					return polku + tiedosto
 					break
 		return ""
 		
