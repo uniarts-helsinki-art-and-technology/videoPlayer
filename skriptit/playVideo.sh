@@ -138,7 +138,8 @@ while True:
 		break
 
 lokaaliTiedosto = mediaLataaja.haeLokaaliTiedosto()
-print "Toistetaan: " + lokaaliTiedosto
+print "Toistetaan: " + lokaaliTiedosto + "..."
+sleep(5)
 
 # argumentti -o: käytetään audiolaitteena analogista ulostuloa
 # argument -o: using analog audio output
