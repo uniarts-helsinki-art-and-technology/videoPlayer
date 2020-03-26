@@ -18,10 +18,8 @@ MAX_YRITYKSIA = 10
 def onPiilotiedostoTaiKansio(polku, tiedosto):
 	try:
 		if os.path.isdir(polku+tiedosto):
-			print "Tiedosto \"" + polku+tiedosto + "\" on kansio"
 			return True
 		if tiedosto[0] == ".":
-			print "Tiedosto \"" + polku+tiedosto + "\" on piilotiedosto"
 			return True
 		return False
 	except:
@@ -79,7 +77,7 @@ class c_mediaLataaja:
 	def irrota(self):
 		if self.liitettyPolku == "":
 			return
-		os.system("umount " + self.liitettyPolku)
+		os.system("umount \"" + self.liitettyPolku + "\"")
 
 
 mediaLataaja = c_mediaLataaja()
@@ -124,7 +122,7 @@ while True:
 
 			print "Poistetaan entiset tiedostot muistikortilta"
 			print "Removing previous files from the local storage"
-			os.system("rm -f -v " + LOKAALI_POLKU + "*");
+			os.system("rm -rf -v " + LOKAALI_POLKU);
 			print "Kopioidaan tiedosto muistikortille"
 			print "Copying file to the local storage"
 			os.system("mkdir -p " + LOKAALI_POLKU + " && cp -v \"" + videotiedostoMedialta + "\" " + LOKAALI_POLKU);
