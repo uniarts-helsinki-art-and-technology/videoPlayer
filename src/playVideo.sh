@@ -37,8 +37,8 @@ print "Haetaan tiedostoa USB-medialta polusta " + cleanPath(mediaPath)
 print "Searching for file from USB media in path " + cleanPath(mediaPath)
 fileWasCopied = loader.copyFromMediaToPath_removeOld(localPath)
 
-try_i = 0
 while True:
+	try_i = 0
 	while fileWasCopied == False and try_i < maxTries:
 		try_i = try_i + 1
 		print "Yritetään uudestaan... " + str(try_i) + "/" + str(maxTries)

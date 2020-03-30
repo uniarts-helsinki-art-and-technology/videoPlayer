@@ -5,6 +5,8 @@ DEFAULT_MEDIA_PATH = "/media/pi/"
 
 
 def cleanPath(path):
+	if path == "":
+		return ""
 	path = path.strip('\"')
 	path = os.path.abspath(path)
 	path = "\"" + path + "\""
@@ -133,9 +135,6 @@ class mediaLoader:
 		if filenameFromMedia == "":
 			return False
 		
-		filenameFromMedia = cleanPath(filenameFromMedia)
-		dstPath = cleanPath(dstPath)
-
 		print "Poistetaan " + dstPath
 		print "Removing " + dstPath
 		self.removeDir(dstPath)
@@ -164,4 +163,9 @@ class mediaLoader:
 	def unmount(self):
 		if self.pathToUnmount == "":
 			return
-		os.system("umount " + cleanPath(self.pathToUnmount) )
+		try:
+			os.system("umount " + cleanPath(self.pathToUnmount) )
+		except:
+			print "Ei voitu irrottaa: " + self.pathToUnmount
+			print "Could not unmount: " + self.pathToUnmount
+			return
