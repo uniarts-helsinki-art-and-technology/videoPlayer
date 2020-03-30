@@ -130,7 +130,8 @@ class mediaLoader:
 	# Return True if file was copied
 	def copyFromMediaToPath_removeOld(self, dstPath):
 
-		filenameFromMedia = self.getFilenameFromMedia()
+		filenameFromMedia = cleanPath(self.getFilenameFromMedia())
+		dstPath = cleanPath(dstPath)
 		
 		if filenameFromMedia == "":
 			return False
