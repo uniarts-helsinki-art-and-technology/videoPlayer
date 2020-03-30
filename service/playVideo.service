@@ -2,7 +2,6 @@
 Description=Play Video
 
 [Service]
-User=pi
 Environment=DISPLAY=:0
 Environment=XAUTHORITY=/home/pi/.Xauthority
 ExecStart=lxterminal -e "/home/pi/Desktop/playVideo.sh"
