@@ -17,8 +17,8 @@ install:
 	mkdir -p $(servicePath)
 	cp -vf $(serviceSrc)$(service) $(servicePath)$(service)
 	
-	systemctl --user enable $(service)
 	systemctl --user daemon-reload
+	systemctl --user enable $(service)
 
 uninstall:
 	systemctl --user stop $(service)

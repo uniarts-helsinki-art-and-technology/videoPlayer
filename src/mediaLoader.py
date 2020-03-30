@@ -97,6 +97,9 @@ class mediaLoader:
 			print "Could not read: " + cleanPath(self.mediaMountPath)
 			return ""
 		
+		if len(mediaList) == 0:
+			return ""
+		
 		for media in mediaList:
 			path = self.mediaMountPath + media
 			try:
@@ -125,11 +128,14 @@ class mediaLoader:
 	# Return True if file was copied
 	def copyFromMediaToPath_removeOld(self, dstPath):
 
-		filenameFromMedia = cleanPath(self.getFilenameFromMedia() )
+		filenameFromMedia = self.getFilenameFromMedia()
 		
 		if filenameFromMedia == "":
 			return False
 		
+		filenameFromMedia = cleanPath(filenameFromMedia)
+		dstPath = cleanPath(dstPath)
+
 		print "Poistetaan " + dstPath
 		print "Removing " + dstPath
 		self.removeDir(dstPath)
@@ -158,9 +164,4 @@ class mediaLoader:
 	def unmount(self):
 		if self.pathToUnmount == "":
 			return
-		try:
-			os.system("umount " + cleanPath(self.pathToUnmount) )
-		except:
-			print "Ei voitu irrottaa: " + self.pathToUnmount
-			print "Could not unmount: " + self.pathToUnmount
-			return
+		os.system("umount " + cleanPath(self.pathToUnmount) )

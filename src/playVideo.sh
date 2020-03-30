@@ -16,6 +16,7 @@ import sys
 
 localPath = "/home/pi/Desktop/videot/"
 mediaPath = "/media/pi/"
+maxTries = 10
 
 loader = mediaLoader()
 loader.setMediaMountPath(mediaPath)
@@ -32,14 +33,12 @@ def playVideo(path):
 # Yritä 'maxTries' kertaa kopioida USB-medialta tiedostoa.
 # Jos ei löydy, toista lokaalista polusta.
 # Jos lokaalista polustakaan ei löydy, yritä uudelleen loputtomasti.
-while True:
+print "Haetaan tiedostoa USB-medialta polusta " + cleanPath(mediaPath)
+print "Searching for file from USB media in path " + cleanPath(mediaPath)
+fileWasCopied = loader.copyFromMediaToPath_removeOld(localPath)
 
-	print "Haetaan tiedostoa USB-medialta polusta " + cleanPath(mediaPath)
-	print "Searching for file from USB media in path " + cleanPath(mediaPath)
-	fileWasCopied = loader.copyFromMediaToPath_removeOld(localPath)
-	
-	try_i = 0
-	
+try_i = 0
+while True:
 	while fileWasCopied == False and try_i < maxTries:
 		try_i = try_i + 1
 		print "Yritetään uudestaan... " + str(try_i) + "/" + str(maxTries)
@@ -59,12 +58,12 @@ while True:
 		print "No file found on USB media in path " + cleanPath(mediaPath)
 		
 	localFile = loader.getFilenameFromPath(localPath)
-	
+
 	if localFile == "":
 		print "Ei löydetty tiedostoa polusta " + localPath
 		print "No file found at " + localPath
 		continue
-	
+
 	# Jos toisto keskeytyy, aloitetaan heti uudestaan
 	# If playback is interrupted, start again immediately
 	while True:

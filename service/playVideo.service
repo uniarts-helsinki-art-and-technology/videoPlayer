@@ -4,11 +4,11 @@ Description=Play Video
 [Service]
 Environment=DISPLAY=:0
 Environment=XAUTHORITY=/home/pi/.Xauthority
-ExecStart=lxterminal -e "/home/pi/Desktop/playVideo.sh"
+ExecStart=lxterminal -e "/home/pi/Desktop/videoPlayer/playVideo.sh"
 Restart=always
-RestartSec=1s
+RestartSec=10s
 KillMode=process
 TimeoutSec=infinity
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target
