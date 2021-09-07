@@ -18,6 +18,9 @@ localPath = "/home/pi/Desktop/videot/"
 mediaPath = "/media/pi/"
 maxTries = 10
 
+# for clean shutdown uncomment next line and set time in minutes
+#os.system("shutdown -h 360")
+
 loader = mediaLoader()
 loader.setMediaMountPath(mediaPath)
 
@@ -56,7 +59,7 @@ while True:
 	else:
 		print "Ei löydetty tiedostoa USB-medialta polussa " + cleanPath(mediaPath)
 		print "No file found on USB media in path " + cleanPath(mediaPath)
-		
+
 	localFile = loader.getFilenameFromPath(localPath)
 
 	if localFile == "":
