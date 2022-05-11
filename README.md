@@ -10,7 +10,7 @@ Riippuvuudet:
 ## Asennus
 
 
-Lataa ja mene kansioon videoPlayer-master
+Avaa Terminal ja siirry kansioon videoPlayer-master
 
 	$ cd /polku/kansioon/videoPlayer-master
 
